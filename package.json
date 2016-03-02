@@ -1,0 +1,28 @@
+{
+  "name": "imhapi",
+  "version": "1.0.0",
+  "description": "Tutorial para aprender a ser hapi en grupo",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "PORT=3200 node ./lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agatagorski/imhapi.git"
+  },
+  "author": "Agata Gorski <agata@caseonit.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/agatagorski/imhapi/issues"
+  },
+  "homepage": "https://github.com/agatagorski/imhapi#readme",
+  "engines": {
+    "node": ">= 5.7.0",
+    "npm": ">= 3.6.0"
+  },
+  "dependencies": {
+    "hapi": "^13.0.0",
+    "lab": "^10.1.0"
+  }
+}
