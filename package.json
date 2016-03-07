@@ -4,25 +4,32 @@
   "description": "Tutorial para aprender a ser hapi en grupo",
   "main": "lib/index.js",
   "scripts": {
-    "start": "PORT=3200 node ./lib/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./lib/start.js",
+    "test": "lab test --reporter console --threshold 100 --assert code --lint --lint-errors-threshold 0 --lint-warnings-threshold 0 --coverage --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agatagorski/imhapi.git"
+    "url": "git+https://github.com/caseonit/imhapi.git"
   },
   "author": "Agata Gorski <agata@caseonit.com>",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/agatagorski/imhapi/issues"
+    "url": "https://github.com/caseonit/imhapi/issues"
   },
-  "homepage": "https://github.com/agatagorski/imhapi#readme",
+  "homepage": "https://github.com/caseonit/imhapi#readme",
   "engines": {
-    "node": ">= 5.7.0",
+    "node": ">= 5.6.0",
     "npm": ">= 3.6.0"
   },
   "dependencies": {
+    "bcrypt": "^0.8.5",
+    "code": "^2.1.0",
     "hapi": "^13.0.0",
-    "lab": "^10.1.0"
+    "hapi-auth-basic": "^4.1.0",
+    "lab": "^10.2.0",
+    "vow": "^0.4.12"
+  },
+  "devDependencies": {
+    "lab": "^10.2.0"
   }
 }
