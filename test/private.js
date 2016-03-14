@@ -9,6 +9,7 @@ const Lab = require('lab');
 const Server = require('../lib');
 const internals = {};
 const Private = require('../lib/private');
+const Path = require('path');
 
 const lab = exports.lab = Lab.script();
 const it = lab.test;
@@ -17,7 +18,7 @@ const expect = Code.expect;
 //Conexion establecida
 it('Conexion establecida', (done) => {
 
-    Server.init(0, (err, server) => {
+    Server.init(internals.manifest, internals.composeOptions, (err, server) => {
 
         expect(err).to.not.exist();
         const request = { method: 'GET', url: '/private', headers: { authorization: internals.header('agata', 'secret') } };
@@ -38,7 +39,7 @@ internals.header = function (username, password) {
 //Usuario no existe
 it('Usuario no existe', (done) => {
 
-    Server.init(0, (err, server) => {
+    Server.init(internals.manifest, internals.composeOptions, (err, server) => {
 
         expect(err).to.not.exist();
         const request = { method: 'GET', url: '/private', headers: { authorization: internals.header('agata2', 'secret') } };
@@ -65,7 +66,7 @@ it('handles register plugin errors', { parallel: false }, (done) => {
         name: 'Fake Version'
     };
 
-    Server.init(0, (err, server) => {
+    Server.init(internals.manifest, internals.composeOptions, (err, server) => {
 
         expect(err).to.exist();
         expect(err.message).to.equal('register version failed');
@@ -73,3 +74,20 @@ it('handles register plugin errors', { parallel: false }, (done) => {
         done();
     });
 });
+
+internals.manifest = {
+    connections: [
+        {
+            port: 0
+        }
+    ],
+    registrations: [
+        {
+            plugin:'./private'
+        }
+    ]
+};
+
+internals.composeOptions = {
+    relativeTo: Path.resolve(__dirname, '../lib')
+};
